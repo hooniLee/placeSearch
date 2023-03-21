@@ -1,0 +1,33 @@
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:h2:mem:placeSearch
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+
+allowed:
+  origin: http://localhost:8080
+
+openapi:
+  kakao:
+    base-url: https://dapi.kakao.com
+    api-key: f3367d8826288a09665b7d33b980c010
+    api:
+      places: /v2/local/search/keyword.json?size=5&query={query}
+  naver:
+    base-url: https://openapi.naver.com
+    client-id: UHKoBHIfUwui9OAOBUtU
+    client-secret: G6lWekrJag
+    api:
+      places: /v1/search/local.json?display=5&query={query}
